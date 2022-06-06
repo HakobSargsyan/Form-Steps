@@ -124,6 +124,7 @@ const FormFlowContainer = () => {
      * Next button click handler
      */
     const handleNext = () => {
+        const isValid = validateFields(storageData, setFieldValidations, page);
         if (page === FormTitles.length) {
             if (storageData[['step1']] && storageData[['step2']]) {
                 console.log(storageData);
@@ -134,7 +135,6 @@ const FormFlowContainer = () => {
                 alert('fill first form data')
             }
         } else {
-            const isValid = validateFields(storageData, setFieldValidations, page);
             if (isValid) {
                 setStorageData({ ...storageData, [`step${page}`]: 'finished' });
                 setPage((currPage) => currPage + 1);
